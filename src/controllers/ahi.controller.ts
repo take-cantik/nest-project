@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { AhiService } from 'src/services/ahi.service';
 
 @Controller('ahi')
@@ -16,7 +16,7 @@ export class AhiController {
   }
 
   @Get(':id')
-  getAhiId(@Param('id') id: string): string {
+  getAhiId(@Param('id', ParseIntPipe) id: string): string {
     return this.ahiService.getAhiId(id);
   }
 }
